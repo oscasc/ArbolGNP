@@ -66,22 +66,30 @@ public class Arbol {
 		if(this.root == null){
 			return 0;
 		}else{
-			depth = this.getDepth(this.root, ++depth);
+			depth = this.getDepth(this.root, depth);
 		}
 		return depth;
 	}
 	
-	private int getDepth(Nodo nodo, int curDepth){
+	
+	
+	private int getDepth(Nodo nodo, int currDepth){
+		currDepth++;
+		int leftCurrDepth = 0,rightCurrDepth=0, maxCurrDepth=0;
 		if(nodo.getLeft() != null){
-			maxDepth = getDepth(nodo.getLeft(),++curDepth);
-		}else if(nodo.getRight() != null){
-			maxDepth = getDepth(nodo.getRight(),++curDepth);
-		}else{
-			if(maxDepth < curDepth){
-				maxDepth = curDepth;
-			}	
+			leftCurrDepth = getDepth(nodo.getLeft(),currDepth);
 		}
+
+		if(nodo.getRight() != null){
+			rightCurrDepth = getDepth(nodo.getRight(),currDepth);
+		}
+	
+		//Comparamos la profundidad de ambas ramas, nos quedamos con la mayor.		 
+		maxCurrDepth = (leftCurrDepth>rightCurrDepth)?leftCurrDepth:rightCurrDepth;
 		
-		return maxDepth;
+		//Nos quedamos con la mayor profundidad visitada
+		currDepth = (currDepth>maxCurrDepth)?currDepth:maxCurrDepth;
+					
+		return currDepth;
 	}
 }
