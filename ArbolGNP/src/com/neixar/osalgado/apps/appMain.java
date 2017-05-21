@@ -9,15 +9,14 @@ public class appMain {
 		
 		Arbol myTree = new Arbol();
 		
-		System.out.println("Sin nodos :: Profundidad actual: " + myTree.getDepth());
+		int[] listArbol = {5,4,20,10,60,15};
 		
-		for(int x = 0; x<100; x++){
+		for(int x : listArbol){
 			myTree.add(x);
 			System.out.println("con x = " + x +" ::Profundidad actual:" + myTree.getDepth());
 		}
-	
-		System.out.println("Max Prof: " + myTree.getDepth());
 		
+		System.out.println("Fin");
 	}
 
 }
